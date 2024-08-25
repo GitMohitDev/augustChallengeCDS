@@ -1,0 +1,22 @@
+@Metadata.layer: #CORE
+annotate view ZMS_I_TRAVEL_BASE
+    with 
+{
+    @UI.lineItem: [{ position: 10, importance: #HIGH, label: 'Travel ID' }]
+    @UI.selectionField: [{ position: 10 }]
+    TravelId;
+    @UI.lineItem: [{ position: 20, importance: #HIGH, label: 'Description' }]
+    Description;
+    @UI.lineItem: [{ position: 30, importance: #HIGH, label: 'Total Price' }]
+    TotalPrice;
+    @UI.lineItem: [{ position: 40, importance: #HIGH, label: 'Currency' }]
+    CurrencyCode;
+    @UI.lineItem: [{ position: 50, importance: #HIGH, label: 'Status Key' }]
+    @UI.selectionField: [{ position: 20 }]
+    Status;
+    @UI.lineItem: [{ position: 60, importance: #HIGH, label: 'Price with currency' }]
+    price_with_currency;
+    @UI.lineItem: [{ position: 70, importance: #HIGH, label: 'Staus Text' }]
+    status_text;
+    
+}

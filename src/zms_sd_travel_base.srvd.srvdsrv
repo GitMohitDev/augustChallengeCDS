@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition: ZMS_I_TRAVEL_BASE'
+define service ZMS_SD_TRAVEL_BASE {
+  expose ZMS_I_TRAVEL_BASE as Travel;
+}
