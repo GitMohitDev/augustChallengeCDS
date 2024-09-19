@@ -29,6 +29,12 @@ define view entity ZMS_I_TRAVEL_BASE
           }
       }]
       status                                                                as Status,
+      case status
+      when 'A' then 3
+      when 'O' then 2
+      when 'X' then 1
+      else 0
+      end                                                                   as statusCriticality,
 
       //New fields
       concat_with_space(cast(total_price as abap.char(20)),currency_code,1) as price_with_currency,

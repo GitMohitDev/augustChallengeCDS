@@ -1,22 +1,67 @@
 @Metadata.layer: #CORE
-annotate view ZMS_I_TRAVEL_BASE
-    with 
+annotate view ZMS_I_TRAVEL_BASE with
 {
-    @UI.lineItem: [{ position: 10, importance: #HIGH, label: 'Travel ID' }]
-    @UI.selectionField: [{ position: 10 }]
-    TravelId;
-    @UI.lineItem: [{ position: 20, importance: #HIGH, label: 'Description' }]
-    Description;
-    @UI.lineItem: [{ position: 30, importance: #HIGH, label: 'Total Price' }]
-    TotalPrice;
-    @UI.lineItem: [{ position: 40, importance: #HIGH, label: 'Currency' }]
-    CurrencyCode;
-    @UI.lineItem: [{ position: 50, importance: #HIGH, label: 'Status Key' }]
-    @UI.selectionField: [{ position: 20 }]
-    Status;
-    @UI.lineItem: [{ position: 60, importance: #HIGH, label: 'Price with currency' }]
-    price_with_currency;
-    @UI.lineItem: [{ position: 70, importance: #HIGH, label: 'Staus Text' }]
-    status_text;
-    
+
+  @UI.facet:[
+      {
+      id: 'Description',
+      type: #DATAPOINT_REFERENCE,
+      purpose: #HEADER,
+      targetQualifier: 'Description'
+  },
+      {
+      id: 'price_with_currency',
+      type: #DATAPOINT_REFERENCE,
+      purpose: #HEADER,
+      targetQualifier: 'price_with_currency'
+  },
+      {
+      id: 'Status',
+      type: #DATAPOINT_REFERENCE,
+      purpose: #HEADER,
+      targetQualifier: 'Status'
+  },
+   //Facet: #FIELDGROUP_REFERENCE
+  {
+        id:'CollectionFacet',
+        type: #COLLECTION,
+        label: 'Travel Data',
+        purpose: #STANDARD
+    },
+   
+  //------------------------1. Field Group - Travel Data Information Start--------
+    {
+        id: 'fieldGroup1',
+        type: #FIELDGROUP_REFERENCE,
+        parentId: 'CollectionFacet',
+        targetQualifier: 'travelData',
+        label: 'Travel Data'
+    }
+    //------------------------1. Field Group - Travel Data Information End--------]
+  ]
+
+  @UI.lineItem: [{ position: 10, importance: #HIGH, label: 'Travel ID' }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @UI.dataPoint:{ title: 'Travel ID' }
+  @UI.fieldGroup: [{ position: 1, label: 'Travel ID', qualifier: 'travelData' }]
+  TravelId;
+  @UI.lineItem: [{ position: 20, importance: #HIGH, label: 'Description' }]
+  @UI.dataPoint:{ title: 'Description' }
+  Description;
+  @UI.lineItem: [{ position: 30, importance: #HIGH, label: 'Total Price' }]
+  TotalPrice;
+  @UI.lineItem: [{ position: 40, importance: #HIGH, label: 'Currency' }]
+  CurrencyCode;
+  @UI.lineItem: [{ position: 50, importance: #HIGH, label: 'Status Key' }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{criticality: 'statusCriticality'}]
+  @UI.dataPoint:{ title: 'Status' }
+  Status;
+  @UI.lineItem: [{ position: 60, importance: #HIGH, label: 'Price with currency' }]
+  @UI.dataPoint:{ title: 'Price' }
+  price_with_currency;
+  @UI.lineItem: [{ position: 70, importance: #HIGH, label: 'Staus Text' }]
+  status_text;
+
 }
